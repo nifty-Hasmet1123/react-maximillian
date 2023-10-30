@@ -14,8 +14,14 @@ const Main = (props) => {
             </div>
             { props.children }
             <footer id="_footer-activity">
-                React activity concepts: see my github 
-                <a href="#" id="source-code"> source code</a>.
+                <span>React activity concepts: see my github </span>
+                <a 
+                    href="https://github.com/nifty-Hasmet1123/react-maximillian/tree/02-practice-stateless-components" 
+                    id="source-code"
+                    rel="noopener noreferrer"
+                > 
+                    source code
+                </a>.
             </footer>
         </main>
     );

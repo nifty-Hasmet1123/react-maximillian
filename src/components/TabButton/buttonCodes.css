@@ -1,0 +1,12 @@
+.buttonCodes {
+    padding-left: 20px;
+    border-left: 1px solid green;
+    border-width: 15px;
+    border-top: 0.2px solid grey;
+    border-bottom: 0.2px solid grey;
+    border-right: 0.2px solid grey;
+}
+
+.pretag {
+    margin: 3px;
+}

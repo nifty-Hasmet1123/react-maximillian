@@ -37,7 +37,7 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       <Header wordList={headerDescriptions} />
       <main>
         <section id="core-concepts">
@@ -89,7 +89,7 @@ function App() {
           </div>
         </section>
       </main>
-    </div>
+    </>
   );
 }
 

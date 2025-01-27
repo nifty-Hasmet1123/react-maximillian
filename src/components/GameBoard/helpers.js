@@ -1,4 +1,4 @@
-import { WINNING_COMBINATION, initialGameBoard } from "./board";
+import { WINNING_COMBINATION, INITIAL_GAME_BOARD } from "./board";
 
 export function deriveActivePlayer(gameTurns) {
   let currentPlayer = "X";
@@ -10,7 +10,7 @@ export function deriveActivePlayer(gameTurns) {
   return currentPlayer;
 }
 
-export function processBoardAndWinner(turns, players) {
+export function processBoardAndWinner(turns) {
   const gameBoard = setGameBoard(turns);
   const winner = setWinner(turns);
 
@@ -19,7 +19,7 @@ export function processBoardAndWinner(turns, players) {
 
 function setGameBoard(turns) {
   // create a deep copy
-  let gameBoard = [...initialGameBoard.map(array => [...array])];
+  let gameBoard = [...INITIAL_GAME_BOARD.map(array => [...array])];
 
   for (let turn of turns) {
     const { square, player } = turn;

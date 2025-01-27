@@ -4,14 +4,12 @@ import Log from "./components/Log/Log";
 import GameOver from "./components/Log/Gameover";
 import { useState } from "react";
 import { deriveActivePlayer, processBoardAndWinner } from "./components/GameBoard/helpers";
+import { PLAYERS } from "./components/Player/players";
 
 function App() {
   // const [activePlayer, setActivePlayer] = useState("X");
   const [gameTurns, setGameTurns] = useState([]);
-  const [players, setPlayers] = useState({
-    "X": "Player 1",
-    "O": "Player 2"
-  })
+  const [players, setPlayers] = useState(PLAYERS);
 
   const activePlayer = deriveActivePlayer(gameTurns); // no need for a state management (reducing state managements)
   const [gameBoard, winner] = processBoardAndWinner(gameTurns); // no need for state management.
@@ -37,7 +35,7 @@ function App() {
   }
 
   const handlePlayerChange = (newName, symbol) => {
-    setPlayers(prev => ({ ...prev, [symbol]: newName }));
+    setPlayers(prev => ({ ...prev, [symbol]: newName.toUpperCase() }));
   }
   
   return (

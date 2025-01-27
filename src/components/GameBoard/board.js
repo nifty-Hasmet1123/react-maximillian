@@ -1,4 +1,4 @@
-const initialGameBoard = [
+const INITIAL_GAME_BOARD = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
@@ -47,4 +47,4 @@ const WINNING_COMBINATION = [
   ]
 ]
 
-export { initialGameBoard, WINNING_COMBINATION };
+export { INITIAL_GAME_BOARD, WINNING_COMBINATION };

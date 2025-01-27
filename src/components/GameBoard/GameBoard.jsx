@@ -1,22 +1,8 @@
-import { initialGameBoard } from "./board";
-import { useState } from "react";
-
-export default function GameBoard() {
-  const [gameBoard, setGameBoard] = useState(initialGameBoard);
-
-  const handleSelectSquare = (rowIdx, colIndex, symbol=null) => {
-    setGameBoard(prevGameBoard => {
-      let copyGameBoard = [...prevGameBoard.map(row => [...row])];
-
-      copyGameBoard[rowIdx][colIndex] = "X";
-      return copyGameBoard;
-    });
-  }
-
+export default function GameBoard({ onSelectSquare, board }) {
   return (
     <ol id="game-board">
       {
-        gameBoard.map((row, rowIdx) => {
+        board.map((row, rowIdx) => {
           return (
             <li
               key={rowIdx}
@@ -25,7 +11,7 @@ export default function GameBoard() {
                 {
                   row.map((playerSymbol, colIndex) => (
                     <li key={colIndex}>
-                      <button onClick={() => handleSelectSquare(rowIdx, colIndex)}>
+                      <button onClick={() => onSelectSquare(rowIdx, colIndex)} disabled={playerSymbol !== null}>
                         {playerSymbol}
                       </button>
                     </li>

@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 
-export default function Player({ name, symbol }) {
+export default function Player({ name, symbol, isActive, onChangeName }) {
+
   const [isEditing, setEditing] = useState(false);
   const [currentName, setName] = useState(name);
   const inputRef = useRef();
@@ -13,17 +14,21 @@ export default function Player({ name, symbol }) {
     // @SEE SECTION 4 NUMBER 78 IN REACT
     setEditing(editing => !editing);
     
+    if (isEditing) {
+      onChangeName(currentName, symbol);     
+    }
+
     setTimeout(() => {
       inputRef.current?.focus();
     }, 0);
   }
 
   const handleInputChange = (e) => {
-    setName(e.target.value);
+    setName(e.target.value);    
   }
 
   return (
-    <li>
+    <li className={isActive ? "active": undefined}>
       <span className="player">
         {
           !isEditing

@@ -1,0 +1,1 @@
+export const TABLE_HEADINGS = ["Year", "Investment Value", "Interest Year", "Total Interest", "Invested Capital"];

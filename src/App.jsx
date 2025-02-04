@@ -17,7 +17,7 @@ function App() {
     const floatValue = parseFloat(value);
 
     setInvestments(prevInvestments => {
-      return { ...prevInvestments, [convertToCamelCase(name)]: floatValue }
+      return { ...prevInvestments, [convertToCamelCase(name)]: isNaN(floatValue) ? 0: floatValue }
     });
   }
   

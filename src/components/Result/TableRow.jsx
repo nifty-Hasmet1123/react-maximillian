@@ -1,7 +1,7 @@
 import { formatter } from "../../util/investment";
 
-export default function TableRow({ tableRow, isHeader }) {
-  if (isHeader) {
+export default function TableRow({ tableRow, initialInvestment, isHeader }) {
+  if (isHeader && tableRow) {
     return <tr>
       {
         tableRow.map((value, index) => <td key={`${value}${index}`}>{value}</td>)
@@ -13,8 +13,10 @@ export default function TableRow({ tableRow, isHeader }) {
     <>
       {
         tableRow.map((listObjects, index) => {
+          listObjects["initialInvestment"] = initialInvestment;
+
           return <tr key={index} className="center">
-            <ExtractedData objects={listObjects}/>
+            <ExtractedData objects={listObjects} />
           </tr>
         })
       }
@@ -23,15 +25,19 @@ export default function TableRow({ tableRow, isHeader }) {
 }
 
 function ExtractedData({ objects }) {
-  const { year, interest, valueEndOfYear, annualInvestment } = objects;
+  const { year, interest, valueEndOfYear, annualInvestment, initialInvestment } = objects;
   const { format } = formatter;
+
+  const totalInterest = (valueEndOfYear - annualInvestment * year) - initialInvestment;
+  const totalAmountInvested = valueEndOfYear - totalInterest;
 
   return (
     <>
       <td>{year}</td>
-      <td>{format(interest)}</td>
       <td>{format(valueEndOfYear)}</td>
-      <td>{format(annualInvestment)}</td>
+      <td>{format(interest)}</td>
+      <td>{format(totalInterest)}</td>
+      <td>{format(totalAmountInvested)}</td>
     </>
   );
 }

@@ -1,4 +1,4 @@
-export default function RenderTable({children, ...props}) {
+export default function RenderTable({isActive, children, ...props}) {
   return (
     <table {...props}>
       {children}
